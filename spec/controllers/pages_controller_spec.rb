@@ -17,9 +17,13 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe "GET #user_profile" do
+    let(:user_id) { Fabricate(:User, username: 'Twa').id }
+    let!(:other_users) { Fabricate.time(2, :User) }
     it "returns http success" do
-      get :user_profile
+
+      get :users/:user_id
       expect(response).to have_http_status(:success)
+      expect(response.body.username).to eq('Twa')
     end
   end
 
