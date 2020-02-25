@@ -1,0 +1,16 @@
+@import "variables";
+
+a {
+  color: $brandprimary;
+  text-decoration: none;
+  :hover {
+    color: $ink;
+    transition: .35s;
+  }
+}
+
+
+
+
+
+

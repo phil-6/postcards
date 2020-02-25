@@ -1,2 +1,56 @@
-<h1>Pages#user_profile</h1>
-<p>Find me in app/views/pages/user_profile.html.erb</p>
+<div class="user-profile">
+  <div class="content">
+    <div class="content-header">
+      <h1>
+        <% if @user == current_user %> Your
+        <% else %> <%= @user.username %>'s
+        <% end %> Postcards </h1>
+      <h2>Sent: <%= @sent_postcards_count %></h2>
+      <h2>Received: <%= @received_postcards_count %></h2>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <% @sent_postcards.each do |sent_pc| %>
+          <div class="postcard">
+            <div class="postcard-inner">
+              <div class="postcard-front" style="background-image: url(<%= sent_pc.image_link %>)">
+                <div class="overlay-top-right">
+                  <h2>Sent From: <%= sent_pc.from_location %></h2>
+                </div>
+                <div class="overlay-bottom-left">
+                  <h2>On: <%= sent_pc.sent_at.to_date %></h2>
+                </div>
+              </div>
+              <div class="postcard-back background-<%= Random.rand(20) %>">
+                <h2>To: <%= User.find(sent_pc.sent_to).username %></h2>
+                <p><%= sent_pc.message %></p>
+                <h2>From: <%= sent_pc.user.username %></h2>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-6">
+        <% @received_postcards.each do |rec_pc| %>
+          <div class="postcard">
+            <div class="postcard-inner">
+              <div class="postcard-front" style="background-image: url(<%= rec_pc.image_link %>)">
+                <div class="overlay-top-right">
+                  <h2>Sent From: <%= rec_pc.from_location %></h2>
+                </div>
+                <div class="overlay-bottom-left">
+                  <h2>On: <%= rec_pc.sent_at.to_date %></h2>
+                </div>
+              </div>
+              <div class="postcard-back background-<%= Random.rand(20) %>">
+                <h2>To: <%= User.find(rec_pc.sent_to).username %></h2>
+                <p><%= rec_pc.message %></p>
+                <h2>From: <%= rec_pc.user.username %></h2>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

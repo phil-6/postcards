@@ -1,0 +1,69 @@
+@import "variables";
+#overboot {
+
+  header {
+    position: relative;
+    height: 100%;
+
+    .home-content {
+      position: relative;
+      width: 100%;
+      text-align: center;
+      .home-content-inner {
+        .home-heading-background {
+          position: relative;
+          background: $darkorangetransparent;
+          padding: 0;
+          transform: rotate(36deg);
+          //transform-origin: 0 100%;
+          border-radius: 30px;
+          height: 450px;
+          width: 450px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top:-350px;
+          z-index:1;
+        }
+        .home-heading-foreground {
+          position: relative;
+          z-index:2;
+          h1 {
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 80px;
+            color: $brandprimary;
+
+          }
+        }
+        hr {
+          margin: 30px auto;
+        }
+        h2 {
+          text-shadow:  1px 1px 12px $notquitewhite;
+        }
+        p {
+          font-weight: 600;
+          font-family: $font;
+          color: $ink;
+          font-size: 20px;
+          margin-bottom: 50px;
+        }
+      }
+    }
+
+    @media only screen and (min-width: 576px ) {
+      .home-content {
+        padding: 100px 15px;
+      }
+    }
+  }
+
+  .content-header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+  }
+}

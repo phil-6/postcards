@@ -1,3 +1,88 @@
-// Place all the styles related to the Postcards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "variables";
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.postcard {
+  background-color: transparent;
+  width: 480px;
+  height: 320px;
+  min-width: 480px;
+  min-height: 320px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  z-index: 3;
+}
+
+/* This container is needed to position the front and back side */
+.postcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.postcard:hover .postcard-inner, .postcard:active .postcard-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.postcard-front, .postcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+/* Style the front side (fallback if image is missing) */
+.postcard-front {
+  background-color: #bbb;
+  color: black;
+
+  .overlay-bottom-left {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    backface-visibility: hidden;
+  }
+  .overlay-top-right {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    backface-visibility: hidden;
+  }
+}
+
+/* Style the back side */
+.postcard-back {
+
+  h2,p{color: white;}
+  transform: rotateY(180deg);
+  padding: 15px;
+}
+/* Background classes for random backgrounds */
+.background-0{background-color:$darkblue}
+.background-1{background-color:$darkseagreen}
+.background-2{background-color:$green}
+.background-3{background-color:$orange}
+.background-4{background-color:$darkorange}
+.background-5{background-color:#a4b6dd}
+.background-6{background-color:#d09292}
+.background-7{background-color:#c094cc}
+.background-8{background-color:#EF2D56}
+.background-9{background-color:#3F88C5}
+.background-10{background-color:#a2d0c0}
+.background-11{background-color:#c37892}
+.background-12{background-color:#C23B23}
+.background-13{background-color:#F39A27}
+.background-14{background-color:#EADA52}
+.background-15{background-color:#03C03C}
+.background-16{background-color:#579ABE}
+.background-17{background-color:#976ED7}
+.background-18{background-color:#7CE577}
+.background-19{background-color:#DC6ACF}

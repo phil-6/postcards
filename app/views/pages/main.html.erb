@@ -1,2 +1,42 @@
-<h1>Pages#main</h1>
-<p>Find me in app/views/pages/main.html.erb</p>
+<header>
+  <%= render partial: 'layouts/alerts' %>
+  <div class="home-content">
+    <div class="home-content-inner">
+      <div id="homeHeading">
+
+        <div class="home-heading-foreground">
+          <h1>Postcards</h1>
+          <h2>from a Stranger</h2>
+          <hr>
+        </div>
+        <div class="home-heading-background"></div>
+
+      </div>
+      <div class="">
+        <div class="card-columns">
+          <% @postcards.each do |pc| %>
+            <div class="postcard card">
+              <div class="postcard-inner">
+                <div class="postcard-front" style="background-image: url(<%= pc.image_link %>)">
+                  <div class="overlay-top-right">
+                    <h2>Sent From: <%= pc.from_location %></h2>
+                  </div>
+                  <div class="overlay-bottom-left">
+                    <h2>On: <%= pc.sent_at.to_date %></h2>
+                  </div>
+                </div>
+                <div class="postcard-back background-<%= Random.rand(20) %>">
+                  <h2>To: <%= User.find(pc.sent_to).username %></h2>
+                  <p><%= pc.message %></p>
+                  <h2>From: <%= pc.user.username %></h2>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</header>
