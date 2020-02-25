@@ -3,12 +3,15 @@
 
 require 'faker'
 
-User.create!(
+user = User.new(
     username: "PostMaster",
     email: "postmaster@purpleriver.dev",
     description: "Hello World",
-    password: "test1234"
+    password: "test1234",
 )
+user.skip_confirmation!
+user.save!
+
 User.create!(
     username: "test",
     email: "test1@email.com",
