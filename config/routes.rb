@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   get '/about',     to: 'pages#about'
   get '/users/:id',   to: 'pages#user_profile'
+
+  resources :postcards
 end
