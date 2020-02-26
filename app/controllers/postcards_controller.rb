@@ -37,6 +37,7 @@ class PostcardsController < ApplicationController
 
     if @postcard.save!
       redirect_to "/users/"+current_user.id.to_s, notice: "Postcard Sent!"
+      PostcardMailer.with(postcard: @postcard).new_postcard_email.deliver_now
     else
       render 'new', alert: "Something Went Wrong, Please try again."
     end
