@@ -16,7 +16,7 @@ RSpec.describe PostcardsController, type: :request do
   end
 
   describe "POST postcards#create" do
-    let(:params) { { postcard: { message: 'abc', from_location: 'abc', image_link: 'www.fart.com' } } }
+    let(:params) { { postcard: { message: 'abc', from_location: 'abc', image_link: 'www.example6.com' } } }
     let(:user) { FactoryBot.create(:user) }
 
     subject { post '/postcards', params: params }
