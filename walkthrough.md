@@ -21,13 +21,15 @@ gem 'sassc-rails'
 gem 'devise'
 ```
 
-- add rspec and faker in dev and test
+- add rspec, faker and factory_bot in dev and test
 
 ```ruby
 # Testing
 gem 'rspec-rails'
 # Faker for seeds
 gem 'faker'
+# Factory Bot for testing
+gem 'factory_bot_rails'
 ```
 
 - add localhost mailer to development config
@@ -175,3 +177,32 @@ before_action :set_user, only: :user_profile
 	- update user_profile.html.erb
 
 ***Commit Now***
+
+- Configure tests
+    - create spec/support/factory_bot.rb and add:
+```ruby
+# Use FactoryBot
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+end
+```
+    - spec/rails_helper.rb uncomment:
+```ruby
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+```
+    - spec/rails_helper.rb add:
+```ruby
+require 'spec_helper'
+require 'rspec/rails'
+# note: require 'devise' after require 'rspec/rails'
+require 'devise'
+
+RSpec.configure do |config|
+  # For Devise > 4.1.1
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+
+end
+```
+
+    - Create Factories - spec/factories/factories.rb
+

@@ -46,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Faker for seeds
   gem 'faker'
+  # Factory Bot for testing
+  gem 'factory_bot_rails'
 end
 
 group :development do
