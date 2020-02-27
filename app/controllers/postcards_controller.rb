@@ -32,12 +32,12 @@ class PostcardsController < ApplicationController
   # POST /postcards
   def create
     @postcard = current_user.postcards.new(postcard_params)
-    @postcard.sent_to = 1 #rand(User.all.count)
+    @postcard.sent_to = (User.map(&:id)).sample
     @postcard.sent_at = Date.today
 
     if @postcard.save!
       redirect_to "/users/"+current_user.id.to_s, notice: "Postcard Sent!"
-      PostcardMailer.with(postcard: @postcard).new_postcard_email.deliver_now
+      # PostcardMailer.with(postcard: @postcard).new_postcard_email.deliver_now
     else
       render 'new', alert: "Something Went Wrong, Please try again."
     end
