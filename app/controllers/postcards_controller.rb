@@ -32,7 +32,8 @@ class PostcardsController < ApplicationController
   # POST /postcards
   def create
     @postcard = current_user.postcards.new(postcard_params)
-    @postcard.sent_to = (User.all(:select => :id).collect(&:id)).sample
+    ids = User.all.map{|u| u.id}
+    @postcard.sent_to = ids.sample
     @postcard.sent_at = Date.today
 
     if @postcard.save!
