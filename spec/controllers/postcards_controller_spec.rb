@@ -20,8 +20,12 @@ RSpec.describe PostcardsController, type: :controller do
     #  expect(response).to redirect_to login_url
     #end
     # TODO: Fix this
+    #let(:pc_attrs) {FactoryBot.attributes_for(:postcard)}
+    #subject {post '/postcards/', postcard: :pc_attrs }
+    #
     #it "creates a new postcard" do
-    #  expect{ post :create, postcard: FactoryBot.attributes_for(:postcard) }.to change(Postcard, :count).by(1)
+    #
+    #  expect{ subject }.to change(Postcard, :count).by(1)
     #end
   end
 
