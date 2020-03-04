@@ -1,0 +1,19 @@
+
+<br><br><br><br><br><br>
+<div class="postcard card">
+  <div class="postcard-inner">
+    <div class="postcard-front" style="background-image: url(<%= @postcard.image_link %>)">
+      <div class="overlay-top-right">
+        <h2>Sent From: <%= @postcard.from_location %></h2>
+      </div>
+      <div class="overlay-bottom-left">
+        <h2>On: <%= @postcard.sent_at.to_date %></h2>
+      </div>
+    </div>
+    <div class="postcard-back background-<%= Random.rand(20) %>">
+      <h2>To: <%= User.find(@postcard.sent_to).username %></h2>
+      <p><%= @postcard.message %></p>
+      <h2>From: <%= @postcard.user.username %></h2>
+    </div>
+  </div>
+</div>

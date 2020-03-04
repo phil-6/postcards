@@ -2,10 +2,14 @@
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .postcard {
   background-color: transparent;
-  width: 480px;
-  height: 320px;
-  min-width: 480px;
-  min-height: 320px;
+  @media (min-width: $breakpoint-mobile){
+    width: 480px;
+    height: 320px;
+    min-width: 480px;
+    min-height: 320px;
+  }
+  width: 320px;
+  height: 480px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   margin-top: 15px;
   margin-left: auto;

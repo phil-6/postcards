@@ -32,7 +32,10 @@
             text-transform: uppercase;
             margin-top: 0;
             margin-bottom: 0;
-            font-size: 80px;
+            @media (min-width: $breakpoint-mobile) {
+              font-size: 80px;
+            }
+            font-size: 50px;
             color: $brandprimary;
 
           }
